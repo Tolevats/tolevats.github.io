@@ -1,10 +1,9 @@
 @import './base.css';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a,
@@ -17,7 +16,7 @@ a,
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: hsla(160, 98%, 50%, 0.2);
   }
 }
 
@@ -33,3 +32,4 @@ a,
     padding: 0 2rem;
   }
 }
+ */
