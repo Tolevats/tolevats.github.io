@@ -1,61 +1,21 @@
-# my-portfolio
+# My Portfolio (WIP)
 
-This template should help get you started developing with Vue 3 in Vite.
+This is my personal portfolio website, showcasing my skills and projects.  It's currently a work in progress, but I'm actively developing it.
 
-## Recommended IDE Setup
+## Tech Stack
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+This project utilizes the following technologies:
 
-## Type Support for `.vue` Imports in TS
+*   **Frontend Framework:** [Vue.js 3](https://vuejs.org/) - A progressive JavaScript framework for building user interfaces.
+*   **Language:** [TypeScript](https://www.typescriptlang.org/) - A typed superset of JavaScript that compiles to plain JavaScript.  Provides improved code maintainability and developer experience.
+*   **State Management:** [Pinia](https://pinia.vuejs.org/) - The intuitive store for Vue.js.  Makes state management a breeze.
+*   **Build Tool:** [Vite](https://vitejs.dev/) - A fast build tool that significantly improves the development experience.
+*   **Unit Testing:** [Vitest](https://vitest.dev/) - A blazing fast unit test framework powered by Vite.
+*   **End-to-End Testing:** [Cypress](https://www.cypress.io/) - A comprehensive end-to-end testing framework for web applications.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Project Structure (WIP)
 
-## Customize configuration
+*(This section will be updated as the project progresses.)*
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+<hr>
+This README is a work in progress and will be updated as the project evolves.
