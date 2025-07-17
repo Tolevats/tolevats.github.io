@@ -1,0 +1,33 @@
+---
+interface Props {
+  headline: string;
+  greeting: string;
+  buttonHero: string;
+}
+
+const { headline, greeting, buttonHero } = Astro.props;
+---
+
+<section id="hero" class="min-h-[85vh] flex flex-col align-items justify-center">
+    <h1>
+        {headline}
+    </h1>
+    <p class="text-[clamp(1rem,2vw+1rem,1.5rem)]">
+        {greeting}
+    </p>
+    <div class="mt-8">
+        <a href="#connect" id="btnHero">
+            {buttonHero}
+        </a>
+    </div>
+
+    <!-- Bouncing Arrow -->
+    <div class="absolute bottom-25 left-1/2 -translate-x-1/2">
+        <a href="#about" aria-label="Scroll down to explore">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8 animate-bounce-slow rounded-full p-1 bg-green-500 dark:bg-green-400">
+                <path fill-rule="evenodd" d="M11.47 13.28a.75.75 0 0 0 1.06 0l7.5-7.5a.75.75 0 0 0-1.06-1.06L12 11.69 5.03 4.72a.75.75 0 0 0-1.06 1.06l7.5 7.5Z" clip-rule="evenodd" />
+                <path fill-rule="evenodd" d="M11.47 19.28a.75.75 0 0 0 1.06 0l7.5-7.5a.75.75 0 1 0-1.06-1.06L12 17.69l-6.97-6.97a.75.75 0 0 0-1.06 1.06l7.5 7.5Z" clip-rule="evenodd" />
+            </svg>
+        </a>
+    </div>
+</section>

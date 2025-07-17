@@ -1,0 +1,156 @@
+---
+// This is a self-contained island for all mobile menu functionality.
+
+interface Props {
+  about: string;
+  projects: string;
+  posts: string;
+  connect: string;
+}
+
+const { about, projects, posts, connect } = Astro.props;
+---
+<div class="md:hidden">
+  <!-- Mobile Menu Button -->
+  <button
+    id="mobile-menu-button"
+    class="p-2 rounded-md hover:bg-stone-200 dark:hover:bg-stone-700"
+    aria-label="Open menu"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+  >
+    <svg
+      class="w-6 h-6"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+  </button>
+  <!-- Mobile Menu Panel -->
+  <div
+    id="mobile-menu"
+    class="hidden absolute top-full right-0 w-full bg-white dark:bg-stone-800 shadow-lg pb-4 mt-2 border-t border-stone-200 dark:border-stone-700"
+  >
+    <ul class="flex flex-col items-center space-y-4 pt-2">
+      <li>
+        <a href="#about" class="mobile-menu-link font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors">{about}</a>
+      </li>
+      <li>
+        <a href="#projects" class="mobile-menu-link font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors">{projects}</a>
+      </li>
+      <li>
+        <a href="#blog" class="mobile-menu-link font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors">{posts}</a>
+      </li>
+      <li>
+        <a href="#connect" class="mobile-menu-link font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors">{connect}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const menuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent click from bubbling up to the document
+      const isExpanded = mobileMenu.classList.toggle("hidden");
+      menuButton.setAttribute("aria-expanded", String(!isExpanded));
+    });
+
+    // Close menu when a link inside it is clicked
+    const links = mobileMenu.querySelectorAll('a.mobile-menu-link');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu if clicking outside of it
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target as Node) && !menuButton.contains(e.target as Node)) {
+        mobileMenu.classList.add('hidden');
+        menuButton.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
+<!--
+  <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-stone-800 shadow-lg pb-4">
+    <ul class="flex flex-col items-center space-y-4 pt-2">
+      <li>
+        <a href="#about"
+          class="font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors"
+          >{about}</a
+        >
+      </li>
+      <li>
+        <a href="#projects"
+          class="font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors"
+          >{projects}</a
+        >
+      </li>
+      <li>
+        <a href="#blog"
+          class="font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors"
+          >{posts}</a
+        >
+      </li>
+      <li>
+        <a href="#connect"
+          class="font-medium hover:text-purple-600 dark:hover:text-purple-500 transition-colors"
+          >{connect}</a
+        >
+      </li>
+    </ul>
+  </div>
+ -->
+
+ <!--
+<script is:inline>
+  // This script runs on the client-side after the component is hydrated.
+  // 'is:inline' ensures it's included directly in the HTML, which is fine for small scripts.
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden"); // Toggles the 'hidden' class
+        const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", String(!isExpanded));
+      });
+
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuButton.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // Close menu on outside click
+      document.addEventListener("click", (event) => {
+        if (
+          !mobileMenu.contains(event.target) &&
+          !menuButton.contains(event.target)
+        ) {
+          if (!mobileMenu.classList.contains("hidden")) {
+            mobileMenu.classList.add("hidden");
+            menuButton.setAttribute("aria-expanded", "false");
+          }
+        }
+      });
+    }
+  });
+</script>
+-->

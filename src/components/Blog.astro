@@ -1,0 +1,61 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  readCTA: string;
+}
+const { title, subtitle, readCTA } = Astro.props;
+
+const allPosts = await getCollection("posts");
+
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const recentPosts = sortedPosts.slice(0, 2);
+---
+
+<section id="blog" class="relative">
+  <div class="flex items-center space-x-4">
+    <h2>{title}</h2>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="fill-red-600 dark:fill-red-400 size-14 animate-megaphone"
+      >
+        <path
+          d="M16.881 4.345A23.112 23.112 0 0 1 8.25 6H7.5a5.25 5.25 0 0 0-.88 10.427 21.593 21.593 0 0 0 1.378 3.94c.464 1.004 1.674 1.32 2.582.796l.657-.379c.88-.508 1.165-1.593.772-2.468a17.116 17.116 0 0 1-.628-1.607c1.918.258 3.76.75 5.5 1.446A21.727 21.727 0 0 0 18 11.25c0-2.414-.393-4.735-1.119-6.905ZM18.26 3.74a23.22 23.22 0 0 1 1.24 7.51 23.22 23.22 0 0 1-1.41 7.992.75.75 0 1 0 1.409.516 24.555 24.555 0 0 0 1.415-6.43 2.992 2.992 0 0 0 .836-2.078c0-.807-.319-1.54-.836-2.078a24.65 24.65 0 0 0-1.415-6.43.75.75 0 1 0-1.409.516c.059.16.116.321.17.483Z"
+        >
+        </path>
+    </svg>
+  </div>
+  <p>{subtitle}</p>
+
+  <div class="mx-auto grid md:grid-cols-2 gap-8">
+    { recentPosts.map((post) => (
+      <a
+        href={post.data.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block no-underline bg-white dark:bg-stone-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow"
+        >
+            <p class="text-sm text-stone-500 dark:text-stone-400 mb-2">
+              {post.data.platform} -{" "}
+              {post.data.publishDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+            <h3 class="text-lg font-bold mb-2">{post.data.title}</h3>
+            <p class="text-sm text-purple-600 dark:text-purple-500 font-semibold">
+              {readCTA} &rarr;
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const currentLocale = Astro.currentLocale;
+const otherLocale = currentLocale === 'en' ? 'es' : 'en';
+const otherLocaleUrl = getRelativeLocaleUrl(otherLocale);
+
+const langNames: Record<string, string> = {
+    en: "English",
+    es: "Español"
+};
+---
+
+<div class="relative">
+    <button id="language-toggle-btn" type="button" class="flex items-center space-x-1  text-stone-500 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700 focus:outline-none focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 rounded-lg text-sm p-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+        </svg>
+        <span>{langNames[currentLocale ?? 'en']}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+        </svg>
+    </button>
+    
+    <!-- Dropdown menu -->
+    <div id="language-dropdown" class="hidden absolute  top-full left-1/2 -translate-x-1/2 mt-2 w-max bg-white dark:bg-stone-800 rounded-lg shadow-lg z-10 p-2">
+        <ul class="flex flex-col space-y-1">
+            <li>
+                <a href={otherLocaleUrl} class="block px-4 py-2 text-sm text-stone-800 dark:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-700 hover:text-purple-600 dark:hover:text-purple-500 transition-colors rounded-md">{langNames[otherLocale]}</a>
+            </li>
+        </ul>
+        
+    </div>
+</div>
+
+<script type="module">
+    // This script just handles the dropdown visibility
+    const langToggleBtn = document.getElementById('language-toggle-btn');
+    const langDropdown = document.getElementById('language-dropdown');
+    
+    langToggleBtn.addEventListener('click', () => {
+        langDropdown.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!langToggleBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+            langDropdown.classList.add('hidden');
+        }
+    });
+</script>

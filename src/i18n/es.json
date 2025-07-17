@@ -1,0 +1,49 @@
+{
+    "site": {
+        "title": "Portafolio de Tolevats",
+        "description": "El portafolio profesional de Pascale Stavelot, una apasionada desarrolladora web."
+    },
+    "nav": {
+        "about": "Sobre mí",
+        "projects": "Proyectos",
+        "posts": "Posts",
+        "connect": "Contacto"
+    },
+    "hero": {
+        "headline": "Entusiasta Full-Stack: Uniendo Creatividad y Código",
+        "greeting": "Hola, soy Pascale Stavelot, una desarrolladora web bilingüe, ¡con la misión de codificar un mundo mejor desde Chile! Bienvenida/o a mi portafolio profesional: transformando ideas en experiencias digitales de impacto.",
+        "buttonHero": "Conectemos"
+    },
+    "about": {
+        "title": "Sobre Mí",
+        "subtitle": "De campañas publicitarias a código: creando historias, construyendo soluciones.",
+        "paragraph1": "Antes, mi lienzo era la persuasiva redacción publicitaria; ahora, es el intrincado mundo del desarrollo web. Mi trayectoria es un testimonio del poder de la curiosidad y un deseo incansable de aprender y crecer. Mi historia profesional comenzó en la publicidad, donde, como copywriter, aprendí a cautivar audiencias y a destilar ideas complejas en mensajes claros y atractivos. Poco sabía que esta base en el storytelling me estaba preparando para un tipo diferente de creación.",
+        "paragraph2": "El cambio fundamental inició con el Certificado Profesional de Diseño UX de Google. Esta experiencia inmersiva encendió mi pasión por el diseño centrado en el usuario y el deseo de construir experiencias digitales que no solo fueran hermosas, sino también intuitivas e impactantes. Fue aquí donde comencé a tender puentes entre la expresión creativa y la resolución funcional de problemas.",
+        "paragraph3": "El catalizador final fue mi selección para el bootcamp de Desarrollo Web de Laboratoria. Este programa intensivo no solo se trató de aprender a codificar; fue sobre adoptar una nueva forma de pensar, colaborar e innovar. Allí, enfrenté un desafío significativo: la transición del diseño conceptual a la lógica rigurosa del desarrollo backend. Recuerdo luchar con una integración de API particularmente compleja, sintiéndome abrumada por la gran cantidad de información nueva. En lugar de rendirme, desarmé el problema en piezas más pequeñas y manejables, pasé horas extra en la pantalla, colaboré con compañeras y probé incansablemente hasta que la solución encajó. Esta experiencia fortaleció mi creencia en el poder de la persistencia y la resolución de problemas.",
+        "paragraph4": "Hoy, soy una desarrolladora entry-level motivada por aplicar mi diverso conjunto de habilidades para crear soluciones web innovadoras y fáciles de usar. Me impulsa el deseo de construir aplicaciones que no solo resuelvan problemas del mundo real, sino que también dejen una impresión positiva duradera.",
+        "ctaAbout": "¡Construyamos algo asombroso juntos!"
+    },
+    "projects": {
+        "title": "Proyectos",
+        "subtitle": "Del concepto al código: mis últimos trabajos",
+        "filterAll": "Todos",
+        "filterFrontend": "Frontend",
+        "filterFullstack": "Full-Stack",
+        "filterTesting": "Testing"
+    },
+    "posts": {
+        "title": "Reflexiones e Ideas",
+        "subtitle": "Sumérgete en mis últimas publicaciones y descubre reflexiones sobre tendencias de desarrollo web, crecimiento personal y el cambiante panorama digital.",
+        "readCTA": "¡Lee y comenta!"
+    },
+    "connect": {
+        "title": "¡Conectemos!",
+        "tMeeting": "Agenda una Reunión",
+        "ctaMeeting": "Tu próximo proyecto podría comenzar con una simple conversación. ¡Reserva una videollamada directamente en mi calendario!",
+        "tMedia": "En Redes Sociales",
+        "ctaMedia": "Encuéntrame en LinkedIn, GitHub y Bluesky para mantenernos en contacto."
+    },
+    "footer": {
+        "copyright": "© 2025 Tolevats. Hecho con <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6 inline-block align-middle\"> <path d=\"m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z\" /> </svg> y pasión | Todos los derechos reservados."
+    }
+}

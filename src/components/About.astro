@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import pascalestavelot from '../assets/pascale-stavelot.jpg';
+
+interface Props {
+    title: string,
+    subtitle: string,
+    paragraph1: string,
+    paragraph2: string,
+    paragraph3: string,
+    paragraph4: string,
+    ctaAbout: string
+}
+
+const { title, subtitle, paragraph1, paragraph2, paragraph3, paragraph4, ctaAbout } = Astro.props;
+---
+
+<section id="about">
+    <div class="grid md:grid-cols-6 gap-12 items-center mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="md:col-span-2">
+            <Image src={pascalestavelot} alt="Professional photo of Pascale Stavelot" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+        </div>
+        <div class="md:col-span-4">
+            <div class="flex items-center space-x-2">
+                <h2>{title}</h2>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-violet-800 dark:fill-violet-300 size-14 animate-microphone-swing">
+                    <path d="M8.25 4.5a3.75 3.75 0 1 1 7.5 0v8.25a3.75 3.75 0 1 1-7.5 0V4.5Z" />
+                    <path d="M6 10.5a.75.75 0 0 1 .75.75v1.5a5.25 5.25 0 1 0 10.5 0v-1.5a.75.75 0 0 1 1.5 0v1.5a6.751 6.751 0 0 1-6 6.709v2.291h3a.75.75 0 0 1 0 1.5h-7.5a.75.75 0 0 1 0-1.5h3v-2.291a6.751 6.751 0 0 1-6-6.709v-1.5A.75.75 0 0 1 6 10.5Z" />
+                </svg>
+            </div>
+            <h3>{subtitle}</h3>
+            <div class="leading-relaxed">
+                <p class="mb-4">{paragraph1}</p>
+                <p class="mb-4">{paragraph2}</p>
+                <p class="mb-4">{paragraph3}</p>
+                <p class="mb-4">{paragraph4}</p>
+            </div>
+            <a href="#connect" class="inline-block text-purple-600 dark:text-purple-500 font-semibold">
+                {ctaAbout} &rarr;
+            </a>
+        </div>
+    </div>
+</section>

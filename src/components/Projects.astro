@@ -1,0 +1,239 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  filterAll: string;
+  filterFrontend: string;
+  filterFullstack: string;
+  filterTesting: string;
+}
+const { title, subtitle, filterAll, filterFrontend, filterFullstack, filterTesting } = Astro.props;
+
+const allProjects = await getCollection('projects');
+
+const localeProjects = allProjects.filter((project: CollectionEntry<'projects'>) => project.id.endsWith(`.${Astro.currentLocale}.md`));
+
+const sortedProjects: Array<CollectionEntry<'projects'>> = localeProjects.sort((a: CollectionEntry<'projects'>, b: CollectionEntry<'projects'>) => {
+    return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+  }
+);
+
+// --- CODE FOR CHIP COLORS ---
+const tagPalettes = {
+  frontend: { bg: "bg-green-100", text: "text-green-800", darkBg: "dark:bg-green-900", darkText: "dark:text-green-300" },
+  backend: { bg: "bg-pink-100", text: "text-pink-800", darkBg: "dark:bg-pink-900", darkText: "dark:text-pink-300" },
+  testing: { bg: "bg-orange-100", text: "text-orange-800", darkBg: "dark:bg-orange-900", darkText: "dark:text-orange-300" },
+  data: { bg: "bg-yellow-100", text: "text-yellow-800", darkBg: "dark:bg-yellow-900", darkText: "dark:text-yellow-300" },
+  cloud: { bg: "bg-blue-200", text: "text-blue-800", darkBg: "dark:bg-blue-800", darkText: "dark:text-blue-200" },
+  default: { bg: "bg-purple-100", text: "text-purple-800", darkBg: "dark:bg-purple-900", darkText: "dark:text-purple-300" }
+};
+
+// 2. Map tags to their respective palettes
+const tagCategoryMap: { [key: string]: keyof typeof tagPalettes } = {
+  // Frontend
+  Astro: "frontend",
+  CSS3: "frontend",
+  TailwindCSS: "frontend",
+  React: "frontend",
+  "Vue.js": "frontend",
+  "Next.js": "frontend",
+
+  // Backend
+  "Node.js": "backend",
+  Java: "backend",
+
+  // Testing
+  Jest: "testing",
+  Cypress: "testing",
+  Postman: "testing",
+  JUnit: "testing",
+  TestNG: "testing",
+  Mockito: "testing",
+  JaCoCo: "testing",
+  Selenium: "testing",
+
+  // Data
+  Zustand: "data",
+  Prisma: "data",
+  SQLite: "data",
+  PostgreSQL: "data",
+
+  // Cloud
+  AWS: "cloud",
+  Azure: "cloud",
+};
+
+// Function to get color classes for a tag
+const getTagColors = (tag: string) => {
+  const category = tagCategoryMap[tag] || "default";
+  return tagPalettes[category];
+};
+---
+
+<section id="projects" class="relative">
+    <div class="flex space-x-4">
+        <h2>
+          {title}
+        </h2>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-yellow-500 dark:fill-yellow-200 size-12 animate-twinkle-stars">
+          <path
+            fill-rule="evenodd"
+            d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813A3.75 3.75 0 0 0 7.466 7.89l.813-2.846A.75.75 0 0 1 9 4.5ZM18 1.5a.75.75 0 0 1 .728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 0 1 0 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 0 1-1.456 0l-.258-1.036a2.625 2.625 0 0 0-1.91-1.91l-1.036-.258a.75.75 0 0 1 0-1.456l1.036-.258a2.625 2.625 0 0 0 1.91-1.91l.258-1.036A.75.75 0 0 1 18 1.5ZM16.5 15a.75.75 0 0 1 .712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 0 1 0 1.422l-1.183.395c-.447.15-.799.5-.948.948l-.395 1.183a.75.75 0 0 1-1.422 0l-.395-1.183a1.5 1.5 0 0 0-.948-.948l-1.183-.395a.75.75 0 0 1 0-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0 1 16.5 15Z"
+            clip-rule="evenodd">
+          </path>
+        </svg>
+    </div>
+      <h3>{subtitle}</h3>
+    
+    <!-- Project Filters Container -->
+    <div
+      id="filter-container"
+      class="flex justify-center space-x-2 md:space-x-4 m-12"
+    >
+      <button
+        data-filter="All"
+        class="filter-btn bg-green-500 dark:bg-green-400 text-white py-2 px-5 rounded-full text-sm font-semibold"
+        >{filterAll}</button
+      >
+      <button
+        data-filter="Frontend"
+        class="filter-btn bg-stone-200 dark:bg-stone-700 py-2 px-5 rounded-full text-sm font-semibold"
+        >{filterFrontend}</button
+      >
+      <button
+        data-filter="Full-Stack"
+        class="filter-btn bg-stone-200 dark:bg-stone-700 py-2 px-5 rounded-full text-sm font-semibold"
+        >{filterFullstack}</button
+      >
+      <button
+        data-filter="Testing"
+        class="filter-btn bg-stone-200 dark:bg-stone-700 py-2 px-5 rounded-full text-sm font-semibold"
+        >{filterTesting}</button
+      >
+    </div>
+
+    <!-- Projects Grid -->
+    <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      { sortedProjects.map((project) => {
+        return (
+          <div
+            class="project-card bg-white dark:bg-stone-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300 relative"
+            data-category={project.data.category}
+          >
+            <Image
+              src={project.data.imgSrc}
+              alt={project.data.imgAlt}
+              width={1800}
+              height={1600}
+              class="w-full h-48 object-cover"
+              loading="lazy"
+            />
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">{project.data.title}</h3>
+              <p class="text-stone-600 dark:text-stone-400 mb-4 text-sm">
+                {project.data.description}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {project.data.tags.map((tag: string) => {
+                  const colors = getTagColors(tag);
+                  return (
+                    <span
+                      class={`${colors.bg} ${colors.text} ${colors.darkBg} ${colors.darkText} text-xs font-medium px-2.5 py-0.5 rounded-full`}
+                    >
+                      {tag}
+                    </span>
+                  );
+                })}
+              </div>
+              <!-- Conditionally render the link icon if a URL exists -->
+              {project.data.url && (
+                <a href={project.data.url} target="_blank" rel="noopener noreferrer" aria-label={`Visit project ${project.data.title}`} class="absolute bottom-4 right-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-purple-500 hover:text-purple-700">
+                    <path fill-rule="evenodd" d="M15.75 2.25H21a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V4.81L8.03 17.03a.75.75 0 0 1-1.06-1.06L19.19 3.75h-3.44a.75.75 0 0 1 0-1.5Zm-10.5 4.5a1.5 1.5 0 0 0-1.5 1.5v10.5a1.5 1.5 0 0 0 1.5 1.5h10.5a1.5 1.5 0 0 0 1.5-1.5V10.5a.75.75 0 0 1 1.5 0v8.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V8.25a3 3 0 0 1 3-3h8.25a.75.75 0 0 1 0 1.5H5.25Z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              )}
+            </div>
+          </div>
+        );
+      })
+      }
+    </div>
+</section>
+
+<script>
+  //Client-side script for filtering logic
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterContainer = document.getElementById("filter-container");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    if (!filterContainer) {
+      console.error("Filter container not found! Check #filter-container ID.");
+      return;
+    }
+    if (projectCards.length === 0) {
+      console.warn("No project cards found.");
+    }
+
+    // Function to set a button as active
+    const setActiveButton = (button: HTMLElement) => {
+      // Remove active classes from all buttons
+      filterContainer.querySelectorAll(".filter-btn").forEach((btn) => {
+        // IMPORTANT: Ensure these classes are the exact inactive state classes
+        btn.classList.remove("bg-green-500", "text-white");
+        btn.classList.add(
+          "bg-stone-200",
+          "text-stone-800",
+          "dark:bg-stone-700",
+          "dark:text-stone-300"
+        );
+      });
+
+      button.classList.remove(
+        "bg-stone-200",
+        "text-stone-800",
+        "dark:bg-stone-700",
+        "dark:text-stone-300"
+      );
+      button.classList.add("bg-green-500", "text-white");
+    };
+
+    filterContainer.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+
+      if (target.tagName !== "BUTTON" || !target.dataset.filter) {
+        return;
+      }
+
+      const filter = target.dataset.filter;
+
+      setActiveButton(target); // Set the clicked button as active
+
+      // Show/hide project cards based on filter
+      projectCards.forEach((card) => {
+        const projectCategory = (card as HTMLElement).dataset.category;
+        const shouldShow = filter === "All" || filter === projectCategory;
+        if (shouldShow) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+    });
+
+    // Initialize active state for 'All' button on load
+    const allButton = filterContainer.querySelector(
+      '[data-filter="All"]'
+    ) as HTMLButtonElement;
+    if (allButton) {
+      setActiveButton(allButton); // Use the new helper function for consistency
+      // Also, trigger the filter immediately on load to show "All" projects
+      projectCards.forEach((card) => {
+        card.classList.remove("hidden"); // Ensure all are visible initially
+      });
+    }
+  });
+</script>

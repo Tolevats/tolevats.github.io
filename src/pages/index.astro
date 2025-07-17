@@ -1,0 +1,72 @@
+---
+import { getI18n } from '../i18n/utils';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Blog from '../components/Blog.astro';
+import Footer from '../components/Footer.astro';
+
+const { currentLocale } = Astro;
+const i18n = getI18n(currentLocale as 'en' | 'es');
+
+const navProps ={
+  about: i18n.nav.about,
+  projects: i18n.nav.projects,
+  posts: i18n.nav.posts,
+  connect: i18n.nav.connect
+}
+
+const heroProps = {
+  headline: i18n.hero.headline,
+  greeting: i18n.hero.greeting,
+  buttonHero: i18n.hero.buttonHero
+};
+
+const aboutProps = {
+  title: i18n.about.title,
+  subtitle: i18n.about.subtitle,
+  paragraph1: i18n.about.paragraph1,
+  paragraph2: i18n.about.paragraph2,
+  paragraph3: i18n.about.paragraph3,
+  paragraph4: i18n.about.paragraph4,
+  ctaAbout: i18n.about.ctaAbout
+};
+
+const projectsProps = {
+  title: i18n.projects.title,
+  subtitle: i18n.projects.subtitle,
+  filterAll: i18n.projects.filterAll,
+  filterFrontend: i18n.projects.filterFrontend,
+  filterFullstack: i18n.projects.filterFullstack,
+  filterTesting: i18n.projects.filterTesting
+}
+
+const postsProps = {
+  title: i18n.posts.title,
+  subtitle: i18n.posts.subtitle,
+  readCTA: i18n.posts.readCTA
+}
+
+const connectProps = {
+  title: i18n.connect.title,
+  tMeeting: i18n.connect.tMeeting,
+  ctaMeeting: i18n.connect.ctaMeeting,
+  tMedia: i18n.connect.tMedia,
+  ctaMedia: i18n.connect.ctaMedia
+}
+
+const footerProps = {
+  copyright: i18n.footer.copyright
+}
+---
+
+<BaseLayout title={i18n.site.title} description={i18n.site.description}>
+  <Header {...navProps} slot="header"/>
+  <Hero {...heroProps} />
+  <About {...aboutProps} />
+  <Projects {...projectsProps} />
+  <Blog {...postsProps} />
+  <Footer {...connectProps} {...footerProps} slot="footer"/>
+</BaseLayout>

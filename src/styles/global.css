@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    /* Base styles for section containers */
+    section {
+        @apply w-full max-w-7xl mx-auto px-8 md:px-10 py-20 md:py-28 lg:py-32;
+    }
+    /* Fluid Typography using clamp() */
+    h1 {
+        @apply font-extrabold tracking-tighter mb-4 text-[clamp(2.5rem,5vw+1rem,6.5rem)] leading-tight;
+    }
+     h2 {
+        @apply font-bold mb-6 text-[clamp(2rem,4vw+1rem,3rem)] leading-tight;
+    }
+    h3 {
+        @apply font-bold mb-2 text-[clamp(1.25rem,2vw+1rem,1.5rem)];
+    }
+
+    /* Base paragraph styles */
+    p {
+        @apply text-stone-600 dark:text-stone-400 mb-6;
+    }
+
+    /* Button style */
+    #btnHero {
+        @apply inline-block bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-700 dark:bg-green-400 dark:hover:bg-green-600 no-underline transition-all transform hover:scale-105;
+    }
+
+    /* Base link styles */
+    a {
+        @apply font-medium hover:text-purple-600 dark:hover:text-purple-500 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-stone-900 rounded;
+    } 
+}
+
+@layer utilities {
+    .animate-bounce-slow {
+        animation: bounce-slow 0.6s infinite;
+    }
+
+    @keyframes bounce-slow {
+        0%, 100% {
+            transform: translateY(-15%);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+        }
+        50% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+        }
+    }
+}
+
+/* Microphone icon - Swinging animation */
+@keyframes swing-microphone {
+    0%, 100% {
+        transform: translateX(0) rotateZ(0deg); /* Start and end at original position, no rotation */
+    }
+    25% {
+        transform: translateX(-5px) rotateZ(-12deg); /* Swing left and incline */
+    }
+    75% {
+        transform: translateX(5px) rotateZ(12deg); /* Swing right and incline */
+    }
+}
+/* Class to apply the animation */
+.animate-microphone-swing {
+    animation: swing-microphone 0.8s infinite ease-in-out; /* Increased duration for a smoother swing */
+    transform-origin: 50% 0%; /* Sets the pivot point for rotation to the top-center */
+}
+
+/* Stars icon - Twinkle animation */
+@keyframes twinkle-stars {
+    0%, 100% {
+        opacity: 0.8; /* Slightly visible */
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        opacity: 1; /* Fully visible (brightest point) */
+        transform: scale(1.1); /* Slightly larger */
+    }
+}
+/* Class to apply the animation */
+.animate-twinkle-stars {
+    animation: twinkle-stars 1.5s infinite ease-in-out; /* 1.5s duration, infinite loop, smooth timing */
+}
+
+/* Megaphone icon - Grow & vibrate animation */
+@keyframes megaphone-grow-vibrate {
+    0%, 100% {
+        transform: scale(1) translateX(0) translateY(0); /* Normal size, no shake */
+    }
+    25% {
+        transform: scale(1.05) translateX(2px) translateY(-2px); /* Slightly grow, move a bit */
+    }
+    50% {
+        transform: scale(1.0) translateX(-2px) translateY(2px); /* Back to normal size, move opposite */
+    }
+    75% {
+        transform: scale(1.05) translateX(2px) translateY(2px); /* Slightly grow again, move */
+    }
+}
+/* Class to apply the animation */
+.animate-megaphone {
+    animation: megaphone-grow-vibrate 1s infinite cubic-bezier(.36,.07,.19,.97) both; /* 1s duration, infinite, bouncy timing */
+    /* Add transform-origin to scale/vibrate from a specific point */
+    transform-origin: center;
+}
+
+/* Chat icon - Overall pulse animation */
+@keyframes chat-icon-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03); /* Slightly larger */
+    }
+}
+/* Individual bubble highlight animation */
+@keyframes chat-bubble-highlight {
+    0%, 100% {
+        opacity: 0.4; /* Faded state */
+    }
+    50% {
+        opacity: 1; /* Highlighted state (full color) */
+    }
+}
+/* Apply animations to chat bubbles */
+.animate-chat-pulse {
+    animation: chat-icon-pulse 2s infinite ease-in-out; /* Slow, gentle pulse for the whole icon */
+}
+/* Target individual bubbles for sequential highlighting */
+#chat-bubble-left {
+    /* Initially set opacity low so the animation is visible */
+    opacity: 0.4;
+    animation: chat-bubble-highlight 1.5s infinite ease-in-out; /* Shorter duration for individual highlight */
+    animation-delay: 0s; /* Starts immediately in its cycle */
+}
+#chat-bubble-right {
+    /* Initially set opacity low */
+    opacity: 0.4;
+    animation: chat-bubble-highlight 1.5s infinite ease-in-out;
+    animation-delay: 0.75s; /* Starts half a cycle later than the left bubble */
+}
+
+/* Google Fonts */
+.zen-loop-regular {
+  font-family: "Zen Loop", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zen-loop-regular-italic {
+  font-family: "Zen Loop", cursive;
+  font-weight: 400;
+  font-style: italic;
+}
+.sedgwick-ave-regular {
+  font-family: "Sedgwick Ave", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.fredericka-the-great-regular {
+  font-family: "Fredericka the Great", serif;
+  font-weight: 400;
+  font-style: normal;
+}
