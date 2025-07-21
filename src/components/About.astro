@@ -2,6 +2,31 @@
 import { Image } from 'astro:assets';
 import pascalestavelot from '../assets/pascale-stavelot.jpg';
 
+interface Hackathon {
+    name: string;
+    role: string;
+    achievement: string;
+    impact: string;
+    icon: string
+}
+
+interface Volunteering {
+    role: string;
+    organization: string;
+    responsibilities: string;
+    impact: string;
+    icon: string
+}
+
+interface Achievements {
+    cta_btn: string;
+    title: string;
+    description: string;
+    hackathons_title: string;
+    volunteering_title: string;
+    hackathons: Hackathon[];
+    volunteering: Volunteering[];
+}
 interface Props {
     title: string,
     subtitle: string,
@@ -9,17 +34,20 @@ interface Props {
     paragraph2: string,
     paragraph3: string,
     paragraph4: string,
-    ctaAbout: string
+    achievements: Achievements,
 }
 
-const { title, subtitle, paragraph1, paragraph2, paragraph3, paragraph4, ctaAbout } = Astro.props;
+const { title, subtitle, paragraph1, paragraph2, paragraph3, paragraph4, achievements } = Astro.props;
+
 ---
 
-<section id="about">
+<section id="about" class="relative">
     <div class="grid md:grid-cols-6 gap-12 items-center mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- picture column -->
         <div class="md:col-span-2">
             <Image src={pascalestavelot} alt="Professional photo of Pascale Stavelot" class="rounded-lg shadow-2xl w-full h-auto object-cover">
         </div>
+        <!-- content column -->
         <div class="md:col-span-4">
             <div class="flex items-center space-x-2">
                 <h2>{title}</h2>
@@ -35,9 +63,82 @@ const { title, subtitle, paragraph1, paragraph2, paragraph3, paragraph4, ctaAbou
                 <p class="mb-4">{paragraph3}</p>
                 <p class="mb-4">{paragraph4}</p>
             </div>
-            <a href="#connect" class="inline-block text-purple-600 dark:text-purple-500 font-semibold">
-                {ctaAbout} &rarr;
-            </a>
+            <!-- achievements button -->
+            <button id="toggle-achievements-btn" type="button" class="inline-flex items-center gap-x-2 text-purple-600 dark:text-purple-500 font-semibold mt-8 group cursor-pointer hover:scale-120 md:hover:scale-200">
+                {achievements.cta_btn}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 transition-transform group-hover:scale-150" aria-label="arrows-pointing-out">
+                    <path fill-rule="evenodd" d="M15 3.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v4.5a.75.75 0 0 1-1.5 0V5.56l-3.97 3.97a.75.75 0 1 1-1.06-1.06l3.97-3.97h-2.69a.75.75 0 0 1-.75-.75Zm-12 0A.75.75 0 0 1 3.75 3h4.5a.75.75 0 0 1 0 1.5H5.56l3.97 3.97a.75.75 0 0 1-1.06 1.06L4.5 5.56v2.69a.75.75 0 0 1-1.5 0v-4.5Zm11.47 11.78a.75.75 0 1 1 1.06-1.06l3.97 3.97v-2.69a.75.75 0 0 1 1.5 0v4.5a.75.75 0 0 1-.75.75h-4.5a.75.75 0 0 1 0-1.5h2.69l-3.97-3.97Zm-4.94-1.06a.75.75 0 0 1 0 1.06L5.56 19.5h2.69a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 1 1.5 0v2.69l3.97-3.97a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+                </svg>
+            </button>
+        </div>
+    </div>
+    <!--achievements card (hidden initially) -->
+    <div id="achievements-card" class="hidden fixed inset-0 bg-stone-100/80 dark:bg-stone-900/80 backdrop-blur-md p-8 rounded-lg z-20 flex items-center justify-center">
+        <div class="bg-white dark:bg-stone-800 p-6 sm:p-8 rounded-lg shadow-2xl border border-stone-200 dark:border-stone-700 w-full max-w-4xl max-h-[90vh] overflow-y-auto relative">
+            <!-- close button for card -->
+            <button id="close-achievements-btn" type="button" class="sticky top-2 right-2 float-right text-stone-500 hover:text-stone-800 dark:text-stone-400 dark:hover:text-stone-100 transition-colors z-10" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+            </button>
+            <div>
+                <h3 class="!text-2xl sm:!text-3xl !mb-2 font-mono mt-12 pr-12">{achievements.title}</h3>
+                <p class="text-sm sm:text-base mb-8">{achievements.description}</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Columna de Hackathons -->
+                <div>
+                    <h4 class="font-bold text-lg text-purple-700 dark:text-purple-400 border-b-2 border-purple-200 dark:border-purple-800 pb-2 mb-4">{achievements.hackathons_title}</h4>
+                    <ul class="space-y-6">
+                        {achievements.hackathons.map(item => (
+                            <li class="border-l-4 border-stone-200 dark:border-stone-700 pl-4">
+                                <div class="flex items-center mb-2">
+                                    <span class="mr-2" set:html={item.icon}></span>
+                                    <h5 class="font-bold text-base !mb-1">{item.name}</h5>
+                                </div>
+                                <p class="text-sm italic !mb-2">{item.role}</p>
+                                <p class="text-sm !mb-0"><strong class="font-semibold">Impact:</strong> {item.impact}{item.achievement}.</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <!-- Columna de Voluntariado -->
+                <div>
+                    <h4 class="font-bold text-lg text-green-700 dark:text-green-400 border-b-2 border-green-200 dark:border-green-800 pb-2 mb-4">{achievements.volunteering_title}</h4>
+                    <ul class="space-y-6">
+                         {achievements.volunteering.map(item => (
+                            <li class="border-l-4 border-stone-200 dark:border-stone-700 pl-4">
+                                <div class="flex items-center mb-2">
+                                    <span class="mr-2" set:html={item.icon}></span>
+                                    <h5 class="font-bold text-base !mb-1">{item.role}</h5>
+                                </div>
+                                <p class="text-sm italic !mb-2">{item.organization}</p>
+                                <p class="text-sm !mb-0"><strong class="font-semibold">Impact:</strong> {item.impact}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
+<!-- script -->
+<script>
+    const toggleBtn = document.getElementById('toggle-achievements-btn');
+    const closeBtn = document.getElementById('close-achievements-btn');
+    const card = document.getElementById('achievements-card');
+
+    if (toggleBtn && closeBtn && card) {
+        toggleBtn.addEventListener('click', () => {
+            card.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Evita el scroll del fondo
+        });
+
+        closeBtn.addEventListener('click', () => {
+            card.classList.add('hidden');
+            document.body.style.overflow = ''; // Restaura el scroll
+        });
+    }
+</script>
