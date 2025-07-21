@@ -21,7 +21,46 @@
         "paragraph2": "El cambio fundamental inició con el Certificado Profesional de Diseño UX de Google. Esta experiencia inmersiva encendió mi pasión por el diseño centrado en el usuario y el deseo de construir experiencias digitales que no solo fueran hermosas, sino también intuitivas e impactantes. Fue aquí donde comencé a tender puentes entre la expresión creativa y la resolución funcional de problemas.",
         "paragraph3": "El catalizador final fue mi selección para el bootcamp de Desarrollo Web de Laboratoria. Este programa intensivo no solo se trató de aprender a codificar; fue sobre adoptar una nueva forma de pensar, colaborar e innovar. Allí, enfrenté un desafío significativo: la transición del diseño conceptual a la lógica rigurosa del desarrollo backend. Recuerdo luchar con una integración de API particularmente compleja, sintiéndome abrumada por la gran cantidad de información nueva. En lugar de rendirme, desarmé el problema en piezas más pequeñas y manejables, pasé horas extra en la pantalla, colaboré con compañeras y probé incansablemente hasta que la solución encajó. Esta experiencia fortaleció mi creencia en el poder de la persistencia y la resolución de problemas.",
         "paragraph4": "Hoy, soy una desarrolladora entry-level motivada por aplicar mi diverso conjunto de habilidades para crear soluciones web innovadoras y fáciles de usar. Me impulsa el deseo de construir aplicaciones que no solo resuelvan problemas del mundo real, sino que también dejen una impresión positiva duradera.",
-        "ctaAbout": "¡Construyamos algo asombroso juntos!"
+        "ctaAbout": "¡Construyamos algo asombroso juntos!",
+        "achievements": {
+            "cta_btn": "Ver Misión: Posible",
+            "title": "Misiones: Posibles > ./impact",
+            "description": "Tu misión, si decides aceptarla, es sumergirte en mis \"Misiones Dev\". Este espacio es un testimonio de los desafíos asumidos y las soluciones entregadas a través de mi participación en hackathons y mis comprometidos esfuerzos voluntarios. Cada proyecto aquí es una operación exitosa que redirige los desafíos hacia un impacto tangible y positivo.",
+            "hackathons_title": "Operaciones Hackathon",
+            "volunteering_title": "Misiones Comunitarias",
+            "hackathons": [
+                {
+                "name": "HackAmine 2024",
+                "role": "Desarrolladora Web, contribuí a los diseños de interfaz de usuario e implementé metodologías ágiles para optimizar el trabajo en equipo.",
+                "achievement": " y obtuvimos el 3er lugar como equipo",
+                "impact": "Desarrollé componentes de UI clave para plataformas diseñadas para abordar desafíos modernos de la industria minera, ",
+                "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\"><path fill-rule=\"evenodd\" d=\"M5.166 2.621v.858c-1.035.148-2.059.33-3.071.543a.75.75 0 0 0-.584.859 6.753 6.753 0 0 0 6.138 5.6 6.73 6.73 0 0 0 2.743 1.346A6.707 6.707 0 0 1 9.279 15H8.54c-1.036 0-1.875.84-1.875 1.875V19.5h-.75a2.25 2.25 0 0 0-2.25 2.25c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-2.25-2.25h-.75v-2.625c0-1.036-.84-1.875-1.875-1.875h-.739a6.706 6.706 0 0 1-1.112-3.173 6.73 6.73 0 0 0 2.743-1.347 6.753 6.753 0 0 0 6.139-5.6.75.75 0 0 0-.585-.858 47.077 47.077 0 0 0-3.07-.543V2.62a.75.75 0 0 0-.658-.744 49.22 49.22 0 0 0-6.093-.377c-2.063 0-4.096.128-6.093.377a.75.75 0 0 0-.657.744Zm0 2.629c0 1.196.312 2.32.857 3.294A5.266 5.266 0 0 1 3.16 5.337a45.6 45.6 0 0 1 2.006-.343v.256Zm13.5 0v-.256c.674.1 1.343.214 2.006.343a5.265 5.265 0 0 1-2.863 3.207 6.72 6.72 0 0 0 .857-3.294Z\" clip-rule=\"evenodd\" /></svg>"
+                },
+                {
+                "name": "Hackatón Código Club 2025 - Codecademy",
+                "role": "Desarrolladora Frontend, enfocada en UI/UX intuitiva y lógica de cálculos complejos.",
+                "achievement": " y obtuve el 3er lugar",
+                "impact": "Diseñé y construí una aplicación web de calculadora que destacó por su creatividad y su experiencia centrada en el usuario objetivo, ",
+                "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\"><path d=\"M11.7 2.805a.75.75 0 0 1 .6 0A60.65 60.65 0 0 1 22.83 8.72a.75.75 0 0 1-.231 1.337 49.948 49.948 0 0 0-9.902 3.912l-.003.002c-.114.06-.227.119-.34.18a.75.75 0 0 1-.707 0A50.88 50.88 0 0 0 7.5 12.173v-.224c0-.131.067-.248.172-.311a54.615 54.615 0 0 1 4.653-2.52.75.75 0 0 0-.65-1.352 56.123 56.123 0 0 0-4.78 2.589 1.858 1.858 0 0 0-.859 1.228 49.803 49.803 0 0 0-4.634-1.527.75.75 0 0 1-.231-1.337A60.653 60.653 0 0 1 11.7 2.805Z\" /><path d=\"M13.06 15.473a48.45 48.45 0 0 1 7.666-3.282c.134 1.414.22 2.843.255 4.284a.75.75 0 0 1-.46.711 47.87 47.87 0 0 0-8.105 4.342.75.75 0 0 1-.832 0 47.87 47.87 0 0 0-8.104-4.342.75.75 0 0 1-.461-.71c.035-1.442.121-2.87.255-4.286.921.304 1.83.634 2.726.99v1.27a1.5 1.5 0 0 0-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.66a6.727 6.727 0 0 0 .551-1.607 1.5 1.5 0 0 0 .14-2.67v-.645a48.549 48.549 0 0 1 3.44 1.667 2.25 2.25 0 0 0 2.12 0Z\" /><path d=\"M4.462 19.462c.42-.419.753-.89 1-1.395.453.214.902.435 1.347.662a6.742 6.742 0 0 1-1.286 1.794.75.75 0 0 1-1.06-1.06Z\" /></svg>"
+                }
+            ],
+            "volunteering": [
+                {
+                "role": "Mentora de Equipo Junior",
+                "organization": "Technovation Girls Chile (Sede La Serena)",
+                "responsibilities": "Guié a un equipo junior (edades 13-15) en el desarrollo de una app móvil con MIT App Inventor, abordando el ODS 7 de la ONU. Fomenté el trabajo en equipo, la resolución de problemas y las habilidades técnicas en un bootcamp seguro e inclusivo.",
+                "impact": "Lideré exitosamente al equipo para completar su proyecto para la competencia regional, empoderando a mujeres jóvenes en tecnología.",
+                "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\"><path fill-rule=\"evenodd\" d=\"M2.25 6a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V6Zm3.97.97a.75.75 0 0 1 1.06 0l2.25 2.25a.75.75 0 0 1 0 1.06l-2.25 2.25a.75.75 0 0 1-1.06-1.06l1.72-1.72-1.72-1.72a.75.75 0 0 1 0-1.06Zm4.28 4.28a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z\" clip-rule=\"evenodd\" /></svg>"
+                },
+                {
+                "role": "Global Ambassador",
+                "organization": "Duolingo",
+                "responsibilities": "Organicé y dirigí eventos y talleres presenciales de aprendizaje de inglés, haciendo crecer la comunidad local de Duolingo y fomentando un vibrante ambiente de aprendizaje.",
+                "impact": "Mejoré la competencia lingüística de numerosos participantes en la región de Coquimbo a través de la construcción y participación de la comunidad.",
+                "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"currentColor\" class=\"size-6\"><path fill-rule=\"evenodd\" d=\"M9 2.25a.75.75 0 0 1 .75.75v1.506a49.384 49.384 0 0 1 5.343.371.75.75 0 1 1-.186 1.489c-.66-.083-1.323-.151-1.99-.206a18.67 18.67 0 0 1-2.97 6.323c.318.384.65.753 1 1.107a.75.75 0 0 1-1.07 1.052A18.902 18.902 0 0 1 9 13.687a18.823 18.823 0 0 1-5.656 4.482.75.75 0 0 1-.688-1.333 17.323 17.323 0 0 0 5.396-4.353A18.72 18.72 0 0 1 5.89 8.598a.75.75 0 0 1 1.388-.568A17.21 17.21 0 0 0 9 11.224a17.168 17.168 0 0 0 2.391-5.165 48.04 48.04 0 0 0-8.298.307.75.75 0 0 1-.186-1.489 49.159 49.159 0 0 1 5.343-.371V3A.75.75 0 0 1 9 2.25ZM15.75 9a.75.75 0 0 1 .68.433l5.25 11.25a.75.75 0 1 1-1.36.634l-1.198-2.567h-6.744l-1.198 2.567a.75.75 0 0 1-1.36-.634l5.25-11.25A.75.75 0 0 1 15.75 9Zm-2.672 8.25h5.344l-2.672-5.726-2.672 5.726Z\" clip-rule=\"evenodd\" /></svg>"
+                }
+            ]
+        }
     },
     "projects": {
         "title": "Proyectos",
